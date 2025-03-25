@@ -67,9 +67,12 @@ for t in transactions:
     balances3[frm] -= amount
     balances3[to] += amount
 
-    for _ in range(len(balances3.keys())):
+    flag = True
+    while flag:
+        flag = False
         for to in balances3.keys():
             while debts[to] and balances3[to] > 0:
+                flag = True
                 k, v = debts[to][0]
                 if v > balances3[to]:
                     amount = balances3[to]
